@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button id="btn">点击</button>
+  <div class="content"></div>
+  <script>
+    const fs = require('fs')
+    const path = require('path')
+    const electron = require('electron')
+    console.log(electron)
+    const content = document.getElementsByClassName('content')[0]
+    btn.onclick = function () {
+      fs.readFile(path.resolve(process.cwd(), 'render/static/index.txt'), (err, data) => {
+        if (!err) {
+          console.log(data.toString())
+          content.innerHTML = data.toString()
+        } else {
+          console.log(err)
+        }
+      })
+    }
+  </script>
+</body>
+
+</html>
